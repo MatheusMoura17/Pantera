@@ -1,25 +1,44 @@
 import * as tf from '@tensorflow/tfjs';
 
-const IMAGE_WIDTH = 100;
-const IMAGE_HEIGHT = 25;
-const IMAGE_CHANNELS = 1;
+import { learningRate, mfccSize, xSize } from '../services/constants';
 
-// Cria o modelo
-const model = tf.sequential();
+export const createModel = () => {
+    const layers: tf.layers.Layer[] = [
+        tf.layers.conv1d({
+            activation: 'relu',
+            filters: 32,
+            inputShape: [xSize, mfccSize],
+            kernelSize: [2],
+        }),
+        tf.layers.conv1d({
+            activation: 'relu',
+            filters: 48,
+            kernelSize: [2],
+        }),
+        tf.layers.conv1d({
+            activation: 'relu',
+            filters: 120,
+            kernelSize: [2],
+        }),
+        tf.layers.maxPooling1d({ poolSize: 2 }),
+        tf.layers.dropout({ rate: 0.25 }),
+        tf.layers.flatten(),
+        tf.layers.dense({ units: 128, activation: 'relu' }),
+        tf.layers.dropout({ rate: 0.25 }),
+        tf.layers.dense({ units: 64, activation: 'relu' }),
+        tf.layers.dropout({ rate: 0.4 }),
+        tf.layers.dense({ units: 1, activation: 'sigmoid' }),
+    ];
 
-model.add(
-    tf.layers.conv2d({
-        inputShape: [IMAGE_WIDTH, IMAGE_HEIGHT, IMAGE_CHANNELS],
-        kernelSize: 5,
-        filters: 8,
-        strides: 1,
-        activation: 'relu',
-        kernelInitializer: 'varianceScaling',
-    }),
-);
-const optimizer = tf.train.adam();
-model.compile({
-    optimizer: optimizer,
-    loss: 'categoricalCrossentropy',
-    metrics: ['accuracy'],
-});
+    const model = tf.sequential({ layers });
+    model.summary();
+
+    const optimizer = tf.train.adam(learningRate);
+    model.compile({
+        loss: 'binaryCrossentropy',
+        metrics: ['accuracy'],
+        optimizer,
+    });
+
+    return model;
+};
