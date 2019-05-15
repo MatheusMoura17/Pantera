@@ -5,6 +5,7 @@
     "main": "index.js",
     "scripts": {
         "preprocess": "NODE_OPTIONS=\"--max-old-space-size=4096\" ts-node services/preprocess.ts",
+        "train": "NODE_OPTIONS=\"--max-old-space-size=8192\" ts-node src/train.ts",
         "start": "ts-node src/index.ts",
         "tsc": "tsc",
         "test": "echo \"Error: no test specified\" && exit 1"
