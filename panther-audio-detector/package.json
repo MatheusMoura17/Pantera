@@ -6,7 +6,7 @@
     "scripts": {
         "preprocess": "NODE_OPTIONS=\"--max-old-space-size=4096\" ts-node services/preprocess.ts",
         "train": "NODE_OPTIONS=\"--max-old-space-size=8192\" ts-node src/train.ts",
-        "start": "ts-node src/index.ts",
+        "start": "ts-node src/test.ts",
         "tsc": "tsc",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
@@ -21,6 +21,7 @@
         "eslint": "^5.16.0",
         "eslint-config-prettier": "^4.2.0",
         "eslint-plugin-prettier": "^3.1.0",
+        "node-microphone": "^0.1.3",
         "prettier": "^1.17.1",
         "ts-node": "^8.1.0",
         "typescript": "^3.4.5"
