@@ -1,4 +1,3 @@
-import * as tf from '@tensorflow/tfjs-node';
 import fs from 'fs-extra';
 
 import { IData } from '../services/types';
