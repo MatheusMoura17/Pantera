@@ -1,26 +1,27 @@
 {
-  "name": "panther-audio-detector",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "ts-node src/index.ts",
-    "tsc": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {},
-  "dependencies": {
-    "@tensorflow/tfjs": "^1.1.2",
-    "@tensorflow/tfjs-node": "^1.1.2",
-    "@typescript-eslint/eslint-plugin": "^1.9.0",
-    "@typescript-eslint/parser": "^1.9.0",
-    "eslint": "^5.16.0",
-    "eslint-config-prettier": "^4.2.0",
-    "eslint-plugin-prettier": "^3.1.0",
-    "prettier": "^1.17.1",
-    "ts-node": "^8.1.0",
-    "typescript": "^3.4.5"
-  }
+    "name": "panther-audio-detector",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "preprocess": "NODE_OPTIONS=\"--max-old-space-size=4096\" ts-node services/preprocess.ts",
+        "start": "ts-node src/index.ts",
+        "tsc": "tsc",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {},
+    "dependencies": {
+        "@tensorflow/tfjs": "^1.1.2",
+        "@tensorflow/tfjs-node": "^1.1.2",
+        "@typescript-eslint/eslint-plugin": "^1.9.0",
+        "@typescript-eslint/parser": "^1.9.0",
+        "eslint": "^5.16.0",
+        "eslint-config-prettier": "^4.2.0",
+        "eslint-plugin-prettier": "^3.1.0",
+        "prettier": "^1.17.1",
+        "ts-node": "^8.1.0",
+        "typescript": "^3.4.5"
+    }
 }
