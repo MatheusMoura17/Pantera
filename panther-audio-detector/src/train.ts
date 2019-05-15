@@ -1,4 +1,5 @@
 import fs from 'fs-extra';
+import '@tensorflow/tfjs-node';
 
 import { IData } from '../services/types';
 import { batchSize, epochs, modelName, dataBasePath } from '../services/constants';
@@ -25,7 +26,7 @@ const train = async () => {
 
     console.log(result.history);
 
-    model.save(`file://${dataBasePath}/model/${modelName}`);
+    model.save(`file://${dataBasePath}/${modelName}`);
 };
 
 train();
